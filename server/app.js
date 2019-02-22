@@ -3,6 +3,9 @@ const express = require('express'),
    cors = require('cors'),
    mongoose = require('mongoose');
 
+const User = require('./models/User');
+const Link = require('./models/Link')
+
 mongoose.connect("mongodb://localhost:27017/test").then(
    () => { console.log('Database connection is successful') },
    err => { console.log('Error when connecting to the database' + err) }
