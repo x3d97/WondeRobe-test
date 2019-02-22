@@ -56,6 +56,23 @@ app.post('/links/', async (req, res, next) => {
    }
 });
 
+app.patch('/links/:id', async (req, res, next) => {
+   try {
+      Link.findById(req.params.id, (err, link) => {
+         if (!link)
+            return next(new Error('Error getting the link!'));
+         else {
+            ++link.linkClicks
+            link.save();
+            res.json({ status: 'ok' });
+         }
+      });
+
+   } catch (err) {
+      next(err)
+   }
+});
+
 const port = process.env.PORT || 4000;
 
 app.listen(port, () => {
