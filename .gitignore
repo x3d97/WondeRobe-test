@@ -6,7 +6,7 @@ npm-debug.log*
 node_modules*
 # Optional npm cache directory
 .npm
-
+dist
 .vscode/
 
 package-lock.json
