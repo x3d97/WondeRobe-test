@@ -16,6 +16,22 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(cors());
 
+app.get('/links/:userId', async (req, res, next) => {
+   try {
+      Link.find({ userId: req.params.userId }, (err, links) => {
+
+         if (err) {
+            console.log(err);
+         }
+         else {
+            res.json(links);
+         }
+      });
+   } catch (err) {
+      next(err)
+   }
+});
+
 app.post('/links/', async (req, res, next) => {
    try {
       let body = req.body;
