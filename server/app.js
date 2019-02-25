@@ -37,7 +37,7 @@ app.post('/links/', async (req, res, next) => {
       let body = req.body;
 
       const user = new User({
-         id: Math.floor(Math.random() * 100) // fixed count of users, just for test, because we have not regs
+         id: Math.floor(1 + Math.random() * 3) // fixed count of users, just for test, because we have not regs
       });
 
       const userData = await user.save().then(user => user)
